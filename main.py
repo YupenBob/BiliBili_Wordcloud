@@ -64,12 +64,10 @@ mask = np.array(Image.open("back.png"))
 color = ImageColorGenerator(mask, default_color=None)
 wordcloud = WordCloud(
                         background_color="white",
-                        width = 17280,
-                        height = 17280,
-                        max_words = 2000,
+                        max_words = 900000,
                         mask = mask,
                         color_func = color,
-                        max_font_size=40,
+                        max_font_size=200,
                         font_path =  "msyhbd.ttc"
                       ).generate(txt)
 wordcloud.to_file('out.jpg')
