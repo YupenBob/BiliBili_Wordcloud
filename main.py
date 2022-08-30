@@ -27,7 +27,6 @@ def Danmu_get(xml_url):
     danmu_list = html.xpath("//d/text()")
     return danmu_list
 
-
-xml_url = DanmuURL_get("1Qd4y1d7px")
-list = Danmu_get(xml_url)
-print(list)
+bv = "1Qd4y1d7px"
+xml_url = DanmuURL_get(bv)
+danmu_list = Danmu_get(xml_url)
