@@ -3,11 +3,14 @@ import re
 from lxml import etree
 import jieba
 from wordcloud import WordCloud
+from wordcloud import ImageColorGenerator
+import numpy as np
+from PIL import Image
 
 #http请求头
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)\
-     AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36 Edg/85.0.564.44"
+     AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 }
 
 #解析视频弹幕xml地址
@@ -30,18 +33,25 @@ def Danmu_get(xml_url):
     danmu_list = html.xpath("//d/text()")
     return danmu_list
 
-bv = "1Qd4y1d7px"
 
-#调用DanmuURL_get
-xml_url = DanmuURL_get(bv)
-
-#调用Danmu_get
-danmu_list = Danmu_get(xml_url)
-
-#拼接danmu_list
+danmu_list = []
+bv = [
+    "1Ra411d7sK",
+    "1eG4y1v7Ky",
+    "1BB4y1L7Pg",
+    "1KD4y167mN",
+    "1Wa41157gs",
+    "18S4y1W7j9",
+]
 txt = ""
-for i in danmu_list:
-    txt = txt + i
+
+#循环
+for i in bv:
+    xml_url = DanmuURL_get(i)
+    danmu_list = Danmu_get(xml_url)
+    #拼接danmu_list
+    for a in danmu_list:
+        txt = txt + a
 
 #分词
 words = jieba.lcut(txt)
@@ -49,5 +59,16 @@ words = jieba.lcut(txt)
 #空格拼接
 wordtxt = ''.join(words)
 
-wordcloud = WordCloud(font_path =  "msyhbd.ttc").generate(wordtxt)
-wordcloud.to_file('中文词云图.jpg')
+#词云生成
+mask = np.array(Image.open("back.png"))
+color = ImageColorGenerator(mask, default_color=None)
+wordcloud = WordCloud(
+                        background_color="white",
+                        width = 17280,
+                        height = 17280,
+                        max_words = 2000,
+                        mask = mask,
+                        color_func = color,
+                        font_path =  "msyhbd.ttc"
+                      ).generate(txt)
+wordcloud.to_file('out.jpg')
