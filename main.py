@@ -69,6 +69,7 @@ wordcloud = WordCloud(
                         max_words = 2000,
                         mask = mask,
                         color_func = color,
+                        max_font_size=40,
                         font_path =  "msyhbd.ttc"
                       ).generate(txt)
 wordcloud.to_file('out.jpg')
