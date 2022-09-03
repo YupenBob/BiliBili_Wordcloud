@@ -16,7 +16,7 @@ headers = {
 #解析视频弹幕xml地址
 def DanmuURL_get(bv):
     print("解析视频弹幕xml地址")
-    video_url = "https://bilibili.com/video/BV" + bv
+    video_url = bv
     print("BV:"+video_url)
     response = requests.get(video_url, headers=headers)
     html = response.content.decode()
@@ -36,21 +36,16 @@ def Danmu_get(xml_url):
 
 danmu_list = []
 bv = [
-    "1Qd4y1d7px",
-    "1gG411b7Pk",
-    "1FN4y1c7xp",
-    "1Jd4y1A7vs",
-    "1d14y1W7Xd",
-    "1Ve4y1X7TY",
-    "1EN4y1V7MB",
-    "1dB4y1k7nB",
-    "1kT411F7v1",
-    "1ae4y1f7aB",
-    "1eW4y1t7TG",
-    "1va411G7Fy",
-    "1LG4y1k7Es",
-    "1gG411b7Pk",
-
+    "https://www.bilibili.com/video/BV1HL4y1577D",
+    "https://www.bilibili.com/video/BV1dr4y1H77b",
+    "https://www.bilibili.com/video/BV1h34y1k7m1",
+    "https://www.bilibili.com/video/BV14P4y1A7UG",
+    "https://www.bilibili.com/video/BV1ES4y1y7K1",
+    "https://www.bilibili.com/video/BV1tL4y1c7hj",
+    "https://www.bilibili.com/video/BV1LB4y1X7Nj",
+    "https://www.bilibili.com/video/BV1ya411W7Lv",
+    "https://www.bilibili.com/video/BV1aa411Z7U2",
+    "https://www.bilibili.com/video/BV1Qd4y1d7px",
 ]
 txt = ""
 
@@ -73,7 +68,7 @@ mask = np.array(Image.open("back.png"))
 color = ImageColorGenerator(mask, default_color=None)
 wordcloud = WordCloud(
                         background_color="white",
-                        max_words = 900000,
+                        max_words = 9000,
                         mask = mask,
                         color_func = color,
                         max_font_size=120,
