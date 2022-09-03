@@ -1,11 +1,9 @@
-import requests
-import re
-from lxml import etree
-import jieba
-from wordcloud import WordCloud
 from wordcloud import ImageColorGenerator
-import numpy as np
+from wordcloud import WordCloud
+from lxml import etree
 from PIL import Image
+import requests,jieba,re
+import numpy as np
 
 #http请求头
 headers = {
