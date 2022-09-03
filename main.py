@@ -36,12 +36,21 @@ def Danmu_get(xml_url):
 
 danmu_list = []
 bv = [
-    "1Ra411d7sK",
-    "1eG4y1v7Ky",
-    "1BB4y1L7Pg",
-    "1KD4y167mN",
-    "1Wa41157gs",
-    "18S4y1W7j9",
+    "1Qd4y1d7px",
+    "1gG411b7Pk",
+    "1FN4y1c7xp",
+    "1Jd4y1A7vs",
+    "1d14y1W7Xd",
+    "1Ve4y1X7TY",
+    "1EN4y1V7MB",
+    "1dB4y1k7nB",
+    "1kT411F7v1",
+    "1ae4y1f7aB",
+    "1eW4y1t7TG",
+    "1va411G7Fy",
+    "1LG4y1k7Es",
+    "1gG411b7Pk",
+
 ]
 txt = ""
 
@@ -67,7 +76,7 @@ wordcloud = WordCloud(
                         max_words = 900000,
                         mask = mask,
                         color_func = color,
-                        max_font_size=200,
+                        max_font_size=120,
                         font_path =  "msyhbd.ttc"
                       ).generate(txt)
 wordcloud.to_file('out.jpg')
